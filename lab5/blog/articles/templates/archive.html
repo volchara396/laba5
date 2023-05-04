@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Архив статей</title>
+<link rel="stylesheet" href="/static/css/article.css">
+</head>
+<body>
+<div class="header">
+    <img src="{{ STATIC_URL }}static/img/logo.png" width="auto" height="100px" /> 
+</div>
+    <div class="archive">
+        {% for post in posts %}
+            <div class="one-post">  
+                <h2 class="post-title"><a href="article/{{ post.id }}">{{ post.title }}</a></h2>
+                <div class="article-info">
+                    <div class="article-author">{{ post.author.username }}</div>
+                    <div class="article-created-date">{{ post.created_date }}</div>
+                </div>
+                <p class="article-text">{{ post.get_excerpt }}</p>
+            </div>
+        {% endfor %}
+     </div>
+</body>
+
+</html>
+
